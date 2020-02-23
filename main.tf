@@ -17,6 +17,26 @@ module "tf-project-services" {
   ]
 }
 
+module "root-folders" {
+  source  = "terraform-google-modules/folders/google"
+  version = "~> 2.0"
+
+  parent = "${data.google_organization.org.name}"
+
+  names = [
+    "prod",
+    "ops"
+  ]
+
+  set_roles = true
+
+  per_folder_admins = [
+  ]
+
+  all_folder_admins = [
+  ]
+}
+
 ###############################################################################
 #                              Audit log exports                              #
 ###############################################################################
