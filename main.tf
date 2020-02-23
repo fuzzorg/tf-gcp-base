@@ -46,14 +46,13 @@ module "root-folders" {
 module "project-audit" {
   source          = "terraform-google-modules/project-factory/google"
   version         = "~> 7.0"
-  parent          = "${data.google_organization.org.name}"
+  org_id          = "${data.google_organization.org.include_children}"
   billing_account = "${data.google_billing_account.acct.id}"
   name            = "audit"
-  lien_reason     = "audit"
+  lien            = true
   activate_apis = concat(var.project_services, [
     "bigquery.googleapis.com",
   ])
-  viewers = var.audit_viewers
 }
 
 # audit logs destination on BigQuery
