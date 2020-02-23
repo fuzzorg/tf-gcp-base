@@ -8,7 +8,7 @@ data "google_billing_account" "acct" {
 }
 
 module "tf-project-services" {
-  source                      = "terraform-google-modules/project-factory/google/modules/project-services"
+  source                      = "terraform-google-modules/project-factory/google/modules/project_services"
   project_id                  = var.terraform_project
   enable_apis                 = var.enable
   disable_services_on_destroy = "true"
