@@ -48,9 +48,6 @@ module "project-audit" {
   billing_account = "${data.google_billing_account.acct.id}"
   name            = "fuzz-audit"
   lien            = true
-  activate_apis = concat(var.project_services, [
-    "bigquery.googleapis.com",
-  ])
 }
 
 # audit logs destination on BigQuery
