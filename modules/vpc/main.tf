@@ -15,7 +15,7 @@ module "vpc" {
   source  = "terraform-google-modules/network/google"
   version = "~> 2.1.0"
 
-  project_id   = module.host-project.project_id
+  project_id   = module.vpc-project.project_id
   network_name = "${var.name_prefix}-shared-vpc"
 
   delete_default_internet_gateway_routes = true
