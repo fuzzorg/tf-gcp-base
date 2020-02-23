@@ -18,8 +18,7 @@ module "vpc" {
   project_id   = module.vpc-project.project_id
   network_name = "${var.name_prefix}-shared-vpc"
 
-  delete_default_internet_gateway_routes = true
-  shared_vpc_host                        = true
+  shared_vpc_host = true
 
   subnets = [
 
