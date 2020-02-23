@@ -30,6 +30,8 @@ module "root-folders" {
   set_roles = true
 
   per_folder_admins = [
+    "infra-group@fuzz.app",
+    "infra-group@fuzz.app",
   ]
 
   all_folder_admins = [
