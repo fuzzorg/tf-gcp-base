@@ -40,12 +40,12 @@ module "root-folders" {
 ###############################################################################
 
 # audit logs project
-module "project-audit" {
-  source          = "./modules/audit"
-  org_id          = "${data.google_organization.org.org_id}"
-  billing_account = "${data.google_billing_account.acct.id}"
-  name            = "fuzz-audit"
-}
+# module "project-audit" {
+#   source          = "./modules/audit"
+#   org_id          = "${data.google_organization.org.org_id}"
+#   billing_account = "${data.google_billing_account.acct.id}"
+#   name            = "fuzz-audit"
+# }
 
 
 # audit logs destination on BigQuery
