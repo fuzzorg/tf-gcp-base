@@ -43,12 +43,13 @@ module "root-folders" {
 
 module "project-audit" {
   source          = "terraform-google-modules/project-factory/google"
-  version         = "~> 7.0"
+  version         = "~> 6.0"
   org_id          = "${data.google_organization.org.org_id}"
   billing_account = "${data.google_billing_account.acct.id}"
   name            = "fuzz-audit"
   lien            = true
 }
+
 
 # audit logs destination on BigQuery
 
