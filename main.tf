@@ -35,6 +35,14 @@ module "root-folders" {
   ]
 }
 
+module "prod-vpc" {
+  source          = "./modules/vpc"
+  name_prefix     = "fuzz"
+  org_id          = "${data.google_organization.org.org_id}"
+  billing_account = "${data.google_billing_account.acct.id}"
+  folder_id       = "${module.root-folders.ids["prod"]}"
+}
+
 ###############################################################################
 #                              Audit log exports                              #
 ###############################################################################
