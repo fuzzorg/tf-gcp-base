@@ -10,7 +10,6 @@ data "google_billing_account" "acct" {
 module "tf-project-services" {
   source                      = "terraform-google-modules/project-factory/google//modules/project_services"
   project_id                  = var.terraform_project
-  enable_apis                 = var.enable
   disable_services_on_destroy = "true"
 
   activate_apis = [
@@ -46,7 +45,7 @@ module "root-folders" {
 module "project-audit" {
   source          = "terraform-google-modules/project-factory/google"
   version         = "~> 7.0"
-  org_id          = "${data.google_organization.org.include_children}"
+  org_id          = "${data.google_organization.org.id}"
   billing_account = "${data.google_billing_account.acct.id}"
   name            = "audit"
   lien            = true
