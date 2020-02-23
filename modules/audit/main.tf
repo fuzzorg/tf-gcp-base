@@ -3,6 +3,6 @@ module "project-audit" {
   version         = "~> 6.0"
   org_id          = var.org_id
   billing_account = var.billing_account
-  name            = "fuzz-audit"
+  name            = var.name
   lien            = true
 }
