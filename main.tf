@@ -12,8 +12,7 @@ module "tf-project-services" {
   project_id                  = var.terraform_project
   disable_services_on_destroy = "true"
 
-  activate_apis = [
-  ]
+  activate_apis = var.project_services
 }
 
 module "root-folders" {
