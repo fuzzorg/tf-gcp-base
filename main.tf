@@ -23,15 +23,13 @@ module "root-folders" {
   parent = "${data.google_organization.org.name}"
 
   names = [
-    "prod",
-    "ops"
+    "prod"
   ]
 
   set_roles = true
 
   per_folder_admins = [
-    "group:infra-team@fuzz.app",
-    "group:infra-team@fuzz.app",
+    "group:infra-team@fuzz.app"
   ]
 
   all_folder_admins = [
