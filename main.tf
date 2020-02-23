@@ -40,14 +40,11 @@ module "root-folders" {
 ###############################################################################
 
 # audit logs project
-
 module "project-audit" {
-  source          = "terraform-google-modules/project-factory/google"
-  version         = "~> 6.0"
+  source          = "./modules/audit"
   org_id          = "${data.google_organization.org.org_id}"
   billing_account = "${data.google_billing_account.acct.id}"
   name            = "fuzz-audit"
-  lien            = true
 }
 
 
