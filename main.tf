@@ -44,17 +44,17 @@ module "root-folders" {
 
 # audit logs project
 
-module "project-audit" {
-  source          = "terraform-google-modules/project-factory/google"
-  version         = "~> 7.0"
-  org_id          = "${data.google_organization.org.id}"
-  billing_account = "${data.google_billing_account.acct.id}"
-  name            = "audit"
-  lien            = true
-  activate_apis = concat(var.project_services, [
-    "bigquery.googleapis.com",
-  ])
-}
+# module "project-audit" {
+#   source          = "terraform-google-modules/project-factory/google"
+#   version         = "~> 7.0"
+#   org_id          = "${data.google_organization.org.id}"
+#   billing_account = "${data.google_billing_account.acct.id}"
+#   name            = "audit"
+#   lien            = true
+#   activate_apis = concat(var.project_services, [
+#     "bigquery.googleapis.com",
+#   ])
+# }
 
 # audit logs destination on BigQuery
 
