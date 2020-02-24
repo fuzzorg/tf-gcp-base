@@ -7,24 +7,3 @@ module "vpc-project" {
   name            = "${var.name_prefix}-vpc"
   lien            = true
 }
-
-/******************************************
-  Network Creation
- *****************************************/
-module "vpc" {
-  source  = "terraform-google-modules/network/google"
-  version = "~> 2.1.0"
-
-  project_id   = module.vpc-project.project_id
-  network_name = "${var.name_prefix}-shared-vpc"
-
-  shared_vpc_host = true
-
-  subnets = [
-
-  ]
-
-  secondary_ranges = {
-
-  }
-}
