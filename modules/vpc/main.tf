@@ -18,6 +18,6 @@ resource "google_compute_shared_vpc_host_project" "host" {
 }
 
 resource "google_compute_network" "vpc_network" {
-  name       = "fuzz-shared-vpc"
-  project_id = "${var.name_prefix}-vpc"
+  name    = "fuzz-shared-vpc"
+  project = "${var.name_prefix}-vpc"
 }
