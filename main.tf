@@ -1,9 +1,9 @@
 data "google_organization" "org" {
-  domain = "fuzz.app"
+  domain = var.gcp_organization_domain
 }
 
 data "google_billing_account" "acct" {
-  display_name = "My Billing Account"
+  display_name = var.gcp_billing_account
   open         = true
 }
 
@@ -12,7 +12,7 @@ module "tf-project-services" {
   project_id                  = var.terraform_project
   disable_services_on_destroy = "true"
 
-  activate_apis = var.project_services
+  activate_apis = var.terraform_project_services
 }
 
 module "root-folders" {

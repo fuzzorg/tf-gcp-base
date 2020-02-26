@@ -1,7 +1,11 @@
-variable "audit_viewers" {
-  description = "Audit project viewers, in IAM format."
-  default = [
-  ]
+variable "gcp_organization_domain" {
+  description = "The name of the gcp organization for all resources."
+  default     = "fuzz.app"
+}
+
+variable "gcp_billing_account" {
+  description = "The name of the billing account to associate with projects."
+  default     = "My Billing Account"
 }
 
 variable "terraform_project" {
@@ -9,7 +13,7 @@ variable "terraform_project" {
   default     = "fuzz-tf"
 }
 
-variable "project_services" {
+variable "terraform_project_services" {
   description = "Service APIs enabled by default in new projects."
   default = [
     "compute.googleapis.com",
