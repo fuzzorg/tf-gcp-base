@@ -7,8 +7,8 @@ locals {
     "roles/compute.networkAdmin",
   ]
   folders = [
-    "ops",
     "prod",
+    "ops",
     "scratch"
   ]
 }
