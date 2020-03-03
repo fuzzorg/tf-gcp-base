@@ -13,6 +13,21 @@ variable "terraform_project" {
   default     = "fuzz-tf"
 }
 
+variable "project_prefix" {
+  description = "A prefix to name all GCP projects with."
+  default     = "fuzz"
+}
+
+variable "terraform_organization" {
+  description = "The terraform cloud organization name"
+  default     = "fuzz"
+}
+
+variable "github_token" {
+  description = "The GitHub token to drive TF Integration."
+  default     = "set-with-env-var"
+}
+
 variable "terraform_project_services" {
   description = "Service APIs enabled by default in new projects."
   default = [

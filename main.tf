@@ -16,29 +16,25 @@ module "tf-project-services" {
 }
 
 module "root-folders" {
-  source  = "terraform-google-modules/folders/google"
-  version = "~> 2.0"
-
-  parent = "${data.google_organization.org.name}"
-
-  names = [
-    "prod"
-  ]
-
-  set_roles = true
-
-  per_folder_admins = [
-    "group:infra-team@fuzz.app"
-  ]
-
-  all_folder_admins = [
-  ]
+  source              = "./modules/root-folders"
+  admin_role          = "group:infra-team@fuzz.app"
+  google_organization = data.google_organization.org.name
 }
 
 module "prod-vpc" {
   source          = "./modules/vpc"
   name_prefix     = "fuzz"
-  org_id          = "${data.google_organization.org.org_id}"
-  billing_account = "${data.google_billing_account.acct.id}"
-  folder_id       = "${module.root-folders.ids["prod"]}"
+  org_id          = data.google_organization.org.org_id
+  billing_account = data.google_billing_account.acct.id
+  folder_id       = module.root-folders.prod-folder
+}
+
+module "ops-workspace" {
+  source                 = "./modules/tf-workspace-project"
+  billing_account        = data.google_billing_account.acct.id
+  folder_id              = module.root-folders.ops-folder
+  project_prefix         = var.project_prefix
+  terraform_organization = var.terraform_organization
+  github_repo            = "fuzzorg/tf-ops"
+  github_token           = var.github_token
 }
