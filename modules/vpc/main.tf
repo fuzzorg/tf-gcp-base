@@ -4,6 +4,9 @@ resource "google_project" "vpc_project" {
   folder_id           = var.folder_id
   billing_account     = var.billing_account
   auto_create_network = false
+  labels = {
+    managed_by = "terraform"
+  }
 }
 
 resource "google_project_service" "project" {
