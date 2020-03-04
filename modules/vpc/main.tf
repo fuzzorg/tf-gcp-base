@@ -17,6 +17,7 @@ resource "google_project_service" "project" {
   service = "compute.googleapis.com"
 
   disable_dependent_services = true
+  auto_create_network        = false
 }
 
 resource "google_compute_shared_vpc_host_project" "host" {
@@ -24,6 +25,8 @@ resource "google_compute_shared_vpc_host_project" "host" {
 }
 
 resource "google_compute_network" "vpc_network" {
-  name    = "fuzz-shared-vpc"
-  project = google_project.vpc_project.project_id
+  name                    = "fuzz-shared-vpc"
+  project                 = google_project.vpc_project.project_id
+  auto_create_subnetworks = false
+  routing_mode            = "GLOBAL"
 }
