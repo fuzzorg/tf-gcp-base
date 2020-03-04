@@ -17,7 +17,6 @@ resource "google_project_service" "project" {
   service = "compute.googleapis.com"
 
   disable_dependent_services = true
-  auto_create_network        = false
 }
 
 resource "google_compute_shared_vpc_host_project" "host" {
