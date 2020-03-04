@@ -1,6 +1,9 @@
+locals {
+  project_name = "${var.name_prefix}-vpc"
+}
 resource "google_project" "vpc_project" {
-  name                = "${var.name_prefix}-vpc"
-  project_id          = "${var.name_prefix}-vpc"
+  name                = local.project_name
+  project_id          = local.project_name
   folder_id           = var.folder_id
   billing_account     = var.billing_account
   auto_create_network = false
@@ -22,5 +25,5 @@ resource "google_compute_shared_vpc_host_project" "host" {
 
 resource "google_compute_network" "vpc_network" {
   name    = "fuzz-shared-vpc"
-  project = "${var.name_prefix}-vpc"
+  project = google_project.vpc_project.project_id
 }
